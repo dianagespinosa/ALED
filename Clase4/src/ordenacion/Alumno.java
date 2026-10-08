@@ -1,8 +1,9 @@
 package ordenacion;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
-public class Alumno implements Comparable<Alumno> {
+public class Alumno implements Comparable<Alumno> { //esta clase puede comparar
 	
 	String nombre;
 	double nota;
@@ -19,13 +20,13 @@ public class Alumno implements Comparable<Alumno> {
 	}
 	
 	//aplicamos el BubbleSort(ordenar arrays) a un caso real
-	public static Alumno[] ordenar(Alumno[] arr) {
+	public static Alumno[] ordenar(Alumno[] arr, Comparator comparador) {
 		
 		for(int pasada = 0; pasada < arr.length; pasada++) {
 			boolean changed = false;
 			
 			for(int i = 0; i < arr.length-1; i++) {
-				if(arr[i].compareTo(arr[i+1]) > 0) { //si mi elemento es mayor que el elemento siguiente
+				if(comparador.compare(arr[i], arr[i+1]) > 0) { //si mi elemento es mayor que el elemento siguiente
 					
 					Alumno tmp = arr[i];
 					arr[i] = arr[i+1];
@@ -44,15 +45,21 @@ public class Alumno implements Comparable<Alumno> {
 	
 	@Override
 	public int compareTo(Alumno o) {
-		return Double.compare(this.nota,o.nota);
+		//return Double.compare(this.nota,o.nota);
 		//quien me ha llamado tiene un nombre y ese lo puedo comparar con otro nombre que alguien me pase como parámetro
 		//return this.nombre.compareTo(o.nombre); 
+		int c = Double.compare(this.nota, o.nota);
+		if(c != 0) {
+			return c;
+		}else {
+			return this.nombre.compareTo(o.nombre);
+		}
 	}
 	
 	public static void main(String[] args) {
 		
-		String a = "Ana";
-		String c = "Carlos";
+		//String a = "Miguel";
+		//String c = "Carlos";
 		
 		//System.out.println(a.compareTo(c));
 		
@@ -64,10 +71,19 @@ public class Alumno implements Comparable<Alumno> {
 		
 		Alumno[] alumnos = {carlos, ana, alejandra};
 		
+		//System.out.println(Arrays.toString(ordenar(alumnos)));
 		System.out.println(Arrays.toString(alumnos));
 		
 		Arrays.sort(alumnos);
 		System.out.println(Arrays.toString(alumnos));
+		
+		//Comparator<Alumno> porNombre = new ComparadorPorNombre();
+		//System.out.println(Arrays.toString(ordenar(alumnos,porNombre)));
+		
+		//Comparator<Alumno> porNota = new ComparadorPorNota();
+		//System.out.println(Arrays.toString(ordenar(alumnos,porNota)));
+		
+		//Comparator<Alumno> porNombre2 = (a,b) -> a.nombre.compareTo(b.nombre);
 	}
 
 }
