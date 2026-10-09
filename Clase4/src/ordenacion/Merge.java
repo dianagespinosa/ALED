@@ -43,7 +43,6 @@ public class Merge { //Objetivo: unir dos arrays manteniendo el orden
 		}
 		
 		//res está lleno
-		
 		return res;
 	}
 	
@@ -90,5 +89,9 @@ public class Merge { //Objetivo: unir dos arrays manteniendo el orden
 		// System.out.println(Arrays.toString(merge(new int[] {1,3,6,8}, new int[] {2,4,5,7})));
 		System.out.println(Arrays.toString(mergeSort(new int [] {5,2,4,3,6,1,9,7})));
 	}
+	
+	//ESTE MÉTODO ES MEJOR QUE EL SELECTIVESORT Y BUBBLESORT: 
+	//
 
 }
+
