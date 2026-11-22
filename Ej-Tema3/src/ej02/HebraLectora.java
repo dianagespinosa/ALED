@@ -1,7 +1,5 @@
 package ej02;
 
-import ej01.RecursoCompartido;
-
 public class HebraLectora extends Thread{
 	
 	private final RecursoCompartido recurso1;
@@ -13,7 +11,7 @@ public class HebraLectora extends Thread{
 		this.recurso2 = recurso2;
 		this.nombre = nombre;
 	}
-	
+
 	@Override
 	public void run() {
 		try {

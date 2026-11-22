@@ -1,9 +1,5 @@
 package ej02;
 
-import ej01.HebraEscritora;
-import ej01.HebraLectora;
-import ej01.RecursoCompartido;
-
 public class Main {
 	
 	//Configuración del número de hebras

@@ -8,19 +8,18 @@ public class Main {
 		
 		public static void main(String[] args) {
 			// Recurso compartido (monitor)
-			RecursoCompartido recurso1 = new RecursoCompartido();
-			RecursoCompartido recurso2 = new RecursoCompartido();
+			RecursoCompartido recurso = new RecursoCompartido();
 
 			System.out.println("Iniciando: " + NUM_LECTORAS + " lectoras y " +
 								NUM_LECTORAS / RATIO_LECTORAS_ESCRITORAS + " escritoras.");
 			try {
 				// Crear y arrancar hebras
 				for (int i = 0; i < NUM_LECTORAS; i++) {
-					Thread t1 = new HebraLectora(recurso1, recurso2, "L" + i);
+					Thread t1 = new HebraLectora(recurso, "L" + i);
 					t1.start();
 					// 1 escritora por cada N lectoras
 					if (i % RATIO_LECTORAS_ESCRITORAS == 0) {
-						Thread t2 = new HebraEscritora(recurso1, recurso2, "E" + i);
+						Thread t2 = new HebraEscritora(recurso, "E" + i);
 						t2.start();
 					}
 					// Esperar hasta 500 ms entre creación de hebras.

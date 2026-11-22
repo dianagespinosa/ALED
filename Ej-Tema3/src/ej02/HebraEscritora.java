@@ -1,7 +1,5 @@
 package ej02;
 
-import ej01.RecursoCompartido;
-
 public class HebraEscritora extends Thread {
 	
 	private final RecursoCompartido recurso1;
